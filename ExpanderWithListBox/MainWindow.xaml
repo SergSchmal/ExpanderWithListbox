@@ -1,0 +1,48 @@
+﻿<Window
+    x:Class="ExpanderWithListBox.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="525"
+    Height="350"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="TemplateWithImage.xaml" />
+                <ResourceDictionary Source="ListBoxItemStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Expander
+            x:Name="Expander"
+            Width="150"
+            HorizontalAlignment="Left"
+            Header="Select item..."
+            FontSize="16"
+            OverridesDefaultStyle="True"
+            Template="{StaticResource SimpleExpanderTemp}" Margin="81,27,0,119">
+            <ScrollViewer
+                Height="100"
+                VerticalAlignment="Top"
+                VerticalScrollBarVisibility="Auto">
+                <ListBox
+                    x:Name="ListBoxControl"
+                    ItemsSource="{Binding Items}"
+                    SelectionChanged="ListBoxControl_OnSelectionChanged" 
+                    ItemContainerStyle="{StaticResource ListBoxItemStyle}">
+                </ListBox>
+            </ScrollViewer>
+        </Expander>
+        <Button
+            Width="100"
+            Height="25"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Click="Button_Click"
+            Content="Click" Margin="320,40,0,0" />
+    </Grid>
+</Window>
